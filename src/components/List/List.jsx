@@ -39,7 +39,7 @@ const List = ({ places, childClicked, isLoading, type, setType, rating, setRatin
               <MenuItem value={4.5}>Above 4.5</MenuItem>
             </Select>
           </FormControl>
-          <Grid container spacing={3} className={classes.list}>
+          <Grid container spacing={3} className={classes.list} >
             {places?.map((place, i) => (
               <Grid ref={elRefs[i]} key={i} item xs={12}>
                 <PlaceDetails selected={Number(childClicked) === i} refProp={elRefs[i]} place={place} />
@@ -47,8 +47,9 @@ const List = ({ places, childClicked, isLoading, type, setType, rating, setRatin
             ))}
           </Grid>
         </>
-      )}
-    </div>
+      )
+      }
+    </div >
   )
 }
 
