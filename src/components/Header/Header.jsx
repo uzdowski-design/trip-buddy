@@ -23,9 +23,12 @@ const Header = ({ setCoordinates }) => {
   return (
     <AppBar position='static'>
       <Toolbar className={classes.toolbar} >
-        <Typography variant="h5" className={classes.title}>
-          Trip Buddy
-        </Typography>
+        <Box display="flex" flexDirection="row" alignItems="center">
+          <img src={process.env.PUBLIC_URL + '/trip-buddy-logo.svg'} height="42" style={{ marginRight: '5px' }} alt="trip buddy logo" />
+          <Typography variant="h5" className={classes.title}>
+            Trip Buddy
+          </Typography>
+        </Box>
         <Box display="flex">
           <Typography variant="h6" className={classes.title}>
             Explore new places
