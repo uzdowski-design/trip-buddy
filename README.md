@@ -3,6 +3,7 @@
 Your personal assistant on every trip!\
 Find best restaurants, hotels or attractions aroud you or wherever you are going to.\
 You can even check what is the weather like in there!
+## 
 
 ### Technologies
 - React
