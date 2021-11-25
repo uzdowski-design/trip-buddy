@@ -12,7 +12,7 @@ const App = () => {
   const [filteredPlaces, setFilteredPlaces] = useState([]);
   const [childClicked, setChildClicked] = useState(null);
   const [coordinates, setCoordinates] = useState({});
-  const [bounds, setBounds] = useState({})
+  const [bounds, setBounds] = useState({});
 
   const [isLoading, setIsLoading] = useState(false);
   const [type, setType] = useState('restaurants');
@@ -21,32 +21,32 @@ const App = () => {
   // get users coordinates on load
   useEffect(() => {
     navigator.geolocation.getCurrentPosition(({ coords: { latitude, longitude } }) => {
-      setCoordinates({ lat: latitude, lng: longitude })
-    })
-  }, [])
+      setCoordinates({ lat: latitude, lng: longitude });
+    });
+  }, []);
 
   useEffect(() => {
-    const filteredPlaces = places.filter((place) => place.rating > rating)
+    const filteredPlaces = places.filter((place) => place.rating > rating);
     setFilteredPlaces(filteredPlaces);
 
-  }, [rating]);
+  }, [rating, places]);
 
   // update coordinates and bounds when map changes
   useEffect(() => {
     if (bounds.sw && bounds.ne) {
       setIsLoading(true);
       getWeatherData(coordinates.lat, coordinates.lng)
-        .then((data) => setWeatherData(data))
+        .then((data) => setWeatherData(data));
 
       getPlacesData(type, bounds.sw, bounds.ne)
         .then((data) => {
           setPlaces(data?.filter((place) => place.name && place.num_reviews > 0));
           setFilteredPlaces([]);
-          setRating('')
+          setRating('');
           setIsLoading(false);
-        })
+        });
     }
-  }, [type, bounds]);
+  }, [type, bounds, coordinates.lat, coordinates.lng]);
 
   return (
     <>
@@ -76,7 +76,7 @@ const App = () => {
         </Grid>
       </Grid>
     </>
-  )
-}
+  );
+};
 
 export default App;
